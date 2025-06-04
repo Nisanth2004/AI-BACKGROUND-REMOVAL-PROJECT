@@ -29,7 +29,7 @@ Commonly used in e-commerce, design, and personal projects to enhance visuals ef
             <div>
                 <input type="file" accept='image/*' name="" id="upload1" hidden />
                 <label htmlFor="upload1" className="bg-black text-white font-medium px-8 py-4 rounded-full hover:opacity-90 transition-transform hover:scale-105 text-lg">
-                    Upload your Image
+                    Upload your Image 
                 </label>
             </div>
          </div>
