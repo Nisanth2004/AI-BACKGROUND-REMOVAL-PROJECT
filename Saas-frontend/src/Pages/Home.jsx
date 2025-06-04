@@ -1,5 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
+import BgRemovalSteps from '../components/BgRemovalSteps'
+import BgSlider from '../components/BgSlider'
 
 const Home = () => {
   return (
@@ -8,8 +10,10 @@ const Home = () => {
         <Header/>
 
         {/* Background Removal steps section  */}
+        <BgRemovalSteps/>
 
         {/*  Background Removal slider section sm */}
+        <BgSlider/>
 
          {/*  Buy credit plan section  */}
 
