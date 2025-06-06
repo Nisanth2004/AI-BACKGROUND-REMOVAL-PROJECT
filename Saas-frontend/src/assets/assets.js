@@ -2,11 +2,12 @@ import logo from './logo.png'
 import video_banner from './video_banner.mp4'
 
 import people from './people.png'
+import credits from './credits.png'
 import people_org from './people_org.png'
 
 
 export const assets={
-    logo,video_banner,people,people_org
+    logo,video_banner,people,people_org,credits
 }
 
 export const steps = [
