@@ -4,6 +4,7 @@ import BgRemovalSteps from '../components/BgRemovalSteps'
 import BgSlider from '../components/BgSlider'
 import Pricing from '../components/Pricing'
 import Testimonials from '../components/Testimonials'
+import TryNow from '../components/TryNow'
 
 const Home = () => {
   return (
@@ -24,6 +25,7 @@ const Home = () => {
           <Testimonials/>
 
            {/*  Try Now section  */}
+           <TryNow/>
 
         
       
