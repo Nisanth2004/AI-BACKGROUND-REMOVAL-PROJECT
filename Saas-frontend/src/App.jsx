@@ -6,10 +6,12 @@ import Footer from './components/Footer'
 import MenuBar from './components/MenuBar'
 import Home from './Pages/Home'
 import { Toaster } from 'react-hot-toast'
+import UserSyncHandler from './components/UserSyncHandler'
 
 function App() {
   return (
     <div>
+      <UserSyncHandler/>
       <MenuBar/>
       <Toaster/>
       <Routes>

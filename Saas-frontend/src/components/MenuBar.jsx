@@ -10,7 +10,7 @@ const MenuBar = () => {
 
     const{openSignIn,openSignUp}=useClerk();
     const{user}=useUser();
-   const{getToken}= useAuth();
+
 
 
     const openRegister=()=>{
@@ -21,11 +21,7 @@ const MenuBar = () => {
         setMenuOpen(false)
         openSignIn({})
     }
-const getData = async() => {
- const token=await getToken();
- console.log(token);
-    console.log(user.id);
-}
+
     
 
   return (
@@ -58,7 +54,7 @@ const getData = async() => {
                     </p>
                 </button>
 
-                <button onClick={getData}>Get the data</button>
+               
 
                 <p className="text-gray-600 max-sm:hidden">
                     Hi,{user ?.fullName}
