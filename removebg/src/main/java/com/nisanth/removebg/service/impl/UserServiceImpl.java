@@ -5,6 +5,7 @@ import com.nisanth.removebg.repository.UserRepository;
 import com.nisanth.removebg.service.UserService;
 import com.nisanth.removebg.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -37,6 +38,21 @@ public class UserServiceImpl implements UserService {
        UserEntity newUser= mapToEntity(userDto);
      userRepository.save(newUser);
      return maptoDto(newUser);
+    }
+
+    @Override
+    public UserDto getUserByClerkId(String clerkId) {
+       UserEntity userEntity= userRepository.findByClerkId(clerkId)
+                .orElseThrow(()->new  UsernameNotFoundException("User Not found"));
+
+      return maptoDto(userEntity);
+    }
+
+    @Override
+    public void deleteUserByClerkId(String clerkId) {
+        UserEntity user=userRepository.findByClerkId(clerkId).orElseThrow(()-> new UsernameNotFoundException("User Not found"));
+
+        userRepository.delete(user);
     }
 
     private UserDto maptoDto(UserEntity newUser) {
