@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { assets } from '../assets/assets';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { SignedIn, SignedOut, useClerk, UserButton, useUser } from '@clerk/clerk-react';
+import { SignedIn, SignedOut, useAuth, useClerk, UserButton, useUser } from '@clerk/clerk-react';
 
 const MenuBar = () => {
 
@@ -10,6 +10,7 @@ const MenuBar = () => {
 
     const{openSignIn,openSignUp}=useClerk();
     const{user}=useUser();
+   const{getToken}= useAuth();
 
 
     const openRegister=()=>{
@@ -20,7 +21,11 @@ const MenuBar = () => {
         setMenuOpen(false)
         openSignIn({})
     }
-
+const getData = async() => {
+ const token=await getToken();
+ console.log(token);
+    console.log(user.id);
+}
     
 
   return (
@@ -52,6 +57,8 @@ const MenuBar = () => {
                         Credits: 0
                     </p>
                 </button>
+
+                <button onClick={getData}>Get the data</button>
 
                 <p className="text-gray-600 max-sm:hidden">
                     Hi,{user ?.fullName}

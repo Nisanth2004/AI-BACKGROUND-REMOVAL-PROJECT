@@ -3,7 +3,7 @@ package com.nisanth.removebg.service.impl;
 import com.nisanth.removebg.dto.UserDto;
 import com.nisanth.removebg.repository.UserRepository;
 import com.nisanth.removebg.service.UserService;
-import entity.UserEntity;
+import com.nisanth.removebg.entity.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

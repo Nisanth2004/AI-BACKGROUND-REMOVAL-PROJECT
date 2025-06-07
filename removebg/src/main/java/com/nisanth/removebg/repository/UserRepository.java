@@ -1,6 +1,6 @@
 package com.nisanth.removebg.repository;
 
-import entity.UserEntity;
+import com.nisanth.removebg.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package entity;
+package com.nisanth.removebg.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
