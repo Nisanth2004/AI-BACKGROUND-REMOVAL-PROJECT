@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { assets } from '../assets/assets';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SignedIn, SignedOut, useAuth, useClerk, UserButton, useUser } from '@clerk/clerk-react';
+import { AppContext } from '../context/AppContext';
 
 const MenuBar = () => {
 
     const[menuOpen,setMenuOpen]=useState(false);
 
     const{openSignIn,openSignUp}=useClerk();
+    const{credit}=useContext(AppContext);
     const{user}=useUser();
 
 
@@ -30,7 +32,7 @@ const MenuBar = () => {
         <Link className="flex items-center space-x-2" to='/'>
             <img src={assets.logo} alt="" className="h-8 w-8 object-contain cursor-pointer" />
             <span className="text-2xl font-semibold text-indigo-700 cursor-pointer">
-                remove.<span className="text-gray-400 cursor-pointer">bg</span>
+                cutcraft.<span className="text-gray-400 cursor-pointer">bg</span>
             </span>
         </Link>
 
@@ -50,7 +52,7 @@ const MenuBar = () => {
                 <button className="flex items-center gap-2 bg-blue-100 px-4 sm:px-5 py-1 5 sm:py-2 5 rounded-full hover:scale-105 transition-all duration-500 cursor-pointer">
                     <img src={assets.credits} height={24} width={24} alt="" />
                     <p className='text-xs sm:text-sm.font-medium.text-gray-600 '>
-                        Credits: 0
+                        Credits: {credit}
                     </p>
                 </button>
 
@@ -91,7 +93,7 @@ const MenuBar = () => {
                     <button className="flex items-center gap-2 bg-blue-100 px-4 py-1 5 sm:py-2 5 rounded-full hover:scale-105 transition-all duration-500 cursor-pointer">
                          <img src={assets.credits} height={24} width={24} alt="" />
                     <p className='text-xs sm:text-sm.font-medium.text-gray-600 '>
-                        Credits: 0
+                        Credits: {credit}
                     </p>
                 </button>
 

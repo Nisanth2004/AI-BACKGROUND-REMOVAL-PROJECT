@@ -8,7 +8,7 @@ const UserSyncHandler = () => {
     const { isLoaded, isSignedIn, getToken } = useAuth();
     const { user } = useUser();
     const [synced, setSynced] = useState(false);
-    const { backendUrl } = useContext(AppContext);
+    const { backendUrl,loadUserCredits} = useContext(AppContext);
 
     useEffect(() => {
         const saveUser = async () => {
@@ -21,7 +21,8 @@ const UserSyncHandler = () => {
                     clerkId: user.id,
                     email: user.primaryEmailAddress.emailAddress,
                     firstName: user.firstName,
-                    lastName: user.lastName
+                    lastName: user.lastName,
+                    photoUrl:user.imageUrl
                 };
 
                 const response = await axios.post(
@@ -38,6 +39,7 @@ const UserSyncHandler = () => {
                 }
 
                 setSynced(true); // prevent re-posting
+                await loadUserCredits();
             } catch (error) {
                 console.error("User sync failed", error);
                 toast.error("User synchronization failed. Please try again.");
