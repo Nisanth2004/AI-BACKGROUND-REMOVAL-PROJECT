@@ -1,7 +1,11 @@
 
+import { useContext } from 'react'
 import { assets } from '../assets/assets'
+import { AppContext } from '../context/AppContext'
 
 const Header = () => {
+
+   const{removeBg}= useContext(AppContext);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
         {/* Left side : video banner */}
@@ -27,7 +31,7 @@ Commonly used in e-commerce, design, and personal projects to enhance visuals ef
 
 
             <div>
-                <input type="file" accept='image/*' name="" id="upload1" hidden />
+                <input type="file" accept='image/*' name="" id="upload1" hidden onChange={(e)=>removeBg(e.target.files[0])} />
                 <label htmlFor="upload1" className="bg-black text-white font-medium px-8 py-4 rounded-full hover:opacity-90 transition-transform hover:scale-105 text-lg">
                     Upload your Image 
                 </label>

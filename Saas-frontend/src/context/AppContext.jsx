@@ -1,7 +1,9 @@
-import { useAuth } from "@clerk/clerk-react";
+import { useAuth, useClerk, useUser } from "@clerk/clerk-react";
 import axios from "axios";
 import { createContext, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+
 
 
 export const AppContext=createContext();
@@ -11,8 +13,12 @@ const AppContextProvider=(props)=>{
 
     const backendUrl="http://localhost:8080/api"
     const[credit,setCredit]=useState(false);
-
+const[image,setImage]=useState(false);
+const[resultImage,setResultImage]=useState(false);
    const{getToken}= useAuth();
+   const{isSignedIn}=useUser();
+   const{openSignIn}=useClerk();
+  const navigate= useNavigate();
 
     const loadUserCredits=async()=>{
         try {
@@ -33,8 +39,39 @@ const AppContextProvider=(props)=>{
         }
     }
 
+    const removeBg=async(selectedImage)=>{
+
+        try{
+            if(!isSignedIn)
+            {
+                return openSignIn()
+            }
+            setImage(selectedImage);
+            setResultImage(false);
+            navigate("/result");
+
+           const token=await getToken();
+
+           const formData=new FormData();
+           selectedImage && formData.append("file",selectedImage);
+         const{data:base64Image}= await axios.post(backendUrl+"/images/remove-background",formData,{ headers: { Authorization: `Bearer ${token}` } });
+         setResultImage(`data:image/png;base64,${base64Image}`)
+         setCredit(credit-1);
+
+
+
+        }
+
+        catch(error)
+        {
+            console.error(error);
+            toast.error("Error while removing the background")
+        }
+    }
+
     const contextValue={
-        backendUrl,credit,setCredit,loadUserCredits
+        backendUrl,credit,setCredit,loadUserCredits,
+        image,setImage,resultImage,setResultImage,removeBg
 
     }
 
