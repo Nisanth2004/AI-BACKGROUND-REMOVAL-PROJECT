@@ -9,6 +9,7 @@ import { Toaster } from 'react-hot-toast'
 import UserSyncHandler from './components/UserSyncHandler'
 import { RedirectToSignIn, SignedIn, SignedOut } from '@clerk/clerk-react'
 import Result from './Pages/Result'
+import BuyCredits from './Pages/BuyCredits'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Toaster/>
       <Routes>
         <Route path='/' element={<Home/>}></Route>
+            <Route path='/pricing' element={<BuyCredits/>}></Route>
         <Route path='/result' element={
           <>
           <SignedIn>

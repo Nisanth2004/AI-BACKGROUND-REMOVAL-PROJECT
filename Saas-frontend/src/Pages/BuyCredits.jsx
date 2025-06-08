@@ -4,7 +4,8 @@ import { useAuth, useClerk } from '@clerk/clerk-react'
 import { placeOrder } from '../service/OrderService';
 import { AppContext } from '../context/AppContext';
 
-const Pricing = () => {
+
+const BuyCredits = () => {
 
  const{isSignedIn,getToken}= useAuth();
  const{openSignIn}=useClerk();
@@ -95,4 +96,4 @@ const handleOrder = (planId) => {
   )
 }
 
-export default Pricing
+export default BuyCredits
